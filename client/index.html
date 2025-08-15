@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend WIP</title>
+    <script defer src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <nav>
+        <a>Nav Panel Here...</a>
+    </nav>
+    <main>
+        <div id="controlPage" class="page">
+            <fieldset class="controlField">
+                <fieldset class="field1">
+                    <legend><h2 id="nameHeader1">Team 1</h2></legend>
+                    <div id="preview1">
+                        <img src="https://placehold.co/400" id="img1" height="100px">
+                        <h3 id="slug1">Slug</h3>
+                        <p id="name1">Team Name</p>
+                    </div>
+                    <!-- /// -->
+                    <div id="input1"> <!-- add onchanges and onblurs -->
+                        <div class="scoreButtonsDiv"> <!-- SCORE -->
+                            <button onclick="updateScore(1, 1)">+1</button>
+                            <h1 id="score1">0</h1>
+                            <button onclick="updateScore(1, -1)">-1</button>
+                        </div>
+                        <input type="text" id="inp_name1" placeholder="Team 1" maxlength="30" onchange="updateTeamInfo(1, 'name')">
+                        <br>
+                        <input type="text" id="inp_slug1" placeholder="TM1" maxlength="4" onchange="this.value = this.value.toUpperCase(); updateTeamInfo(1, 'slug'); updateTextDOM('nameHeader1', this.value)">
+                        <br>
+                        <label for="inp_img1">Team Logo (WIP):</label><br>
+                        <input type="file" id="inp_img1" accept="image/*" onchange="previewImg(event, 'img1', 1)">
+                        <br>
+                        <div class="colorDiv">
+                            <input type="color" id="inp_pCol1" onchange="updateTeamInfo(1, 'pCol')">
+                            <input type="color" id="inp_sCol1" onchange="updateTeamInfo(1, 'sCol')">
+                        </div>
+                    </div>
+                    <div id="roster1" class="player_toggle" style="display: none;">
+                        <h3><span id=rosterName1>Team 1</span> Roster</h3>
+                        <input type="text" id="team1_p1" class="rosterNames" placeholder="Player 1" onchange="updateTeamInfo(1, 'players', 1)"><br>
+                        <input type="text" id="team1_p2" class="rosterNames" placeholder="Player 2" onchange="updateTeamInfo(1, 'players', 2)"><br>
+                        <input type="text" id="team1_p3" class="rosterNames" placeholder="Player 3" onchange="updateTeamInfo(1, 'players', 3)"><br>
+                        <input type="text" id="team1_p4" class="rosterNames" placeholder="Player 4" onchange="updateTeamInfo(1, 'players', 4)"><br>
+                        <input type="text" id="team1_p5" class="rosterNames" placeholder="Player 5" onchange="updateTeamInfo(1, 'players', 5)">
+                    </div>
+                </fieldset>
+                <!-- /// -->
+                <fieldset class="field2">
+                    <legend><h2 id="nameHeader2">Team 2</h2></legend>
+                    <div id="preview2">
+                        <img src="https://placehold.co/400" id="img2" height="100px">
+                        <h3 id="slug2">Slug</h3>
+                        <p id="name2">Team Name</p>
+                    </div>
+                    <!-- /// -->
+                    <div id="input2"> <!--add onchanges and onblurs-->
+                        <div class="scoreButtonsDiv"> <!-- SCORE -->
+                            <button onclick="updateScore(2, 1)">+1</button>
+                            <h1 id="score2">0</h1>
+                            <button onclick="updateScore(2, -1)">-1</button>
+                        </div>
+                        <input type="text" id="inp_name2" placeholder="Team 2" maxlength="30" onchange="updateTeamInfo(2, 'name')">
+                        <br>
+                        <input type="text" id="inp_slug2" placeholder="TM2" maxlength="4" onchange="this.value = this.value.toUpperCase(); updateTeamInfo(2, 'slug'); updateTextDOM('nameHeader2', this.value)">
+                        <br>
+                        <label for="inp_img1">Team Logo (WIP):</label><br>
+                        <input type="file" id="inp_img2" accept="image/*" onchange="previewImg(event, 'img2', 2)">
+                        <br>
+                        <div class="colorDiv">
+                            <input type="color" id="inp_pCol2" onchange="updateTeamInfo(2, 'pCOl')">
+                            <input type="color" id="inp_sCol2" onchange="updateTeamInfo(2, 'sCol')">
+                        </div>
+                    </div>
+                    <div id="roster2" class="player_toggle" style="display: none;">
+                        <h3><span id=rosterNameB>Team 2</span> Roster</h3>
+                        <input type="text" id="team2_p1" class="rosterNames" placeholder="Player 1" onchange="updateTeamInfo(2, 'players', 1)"><br>
+                        <input type="text" id="team2_p2" class="rosterNames" placeholder="Player 2" onchange="updateTeamInfo(2, 'players', 2)"><br>
+                        <input type="text" id="team2_p3" class="rosterNames" placeholder="Player 3" onchange="updateTeamInfo(2, 'players', 3)"><br>
+                        <input type="text" id="team2_p4" class="rosterNames" placeholder="Player 4" onchange="updateTeamInfo(2, 'players', 4)"><br>
+                        <input type="text" id="team2_p5" class="rosterNames" placeholder="Player 5" onchange="updateTeamInfo(2, 'players', 5)">
+                    </div>
+                </fieldset>
+                <!-- /// -->
+                <fieldset class="toggles">
+                    <p>Flipped is <span id="flipStatus">false</span>.</p>
+                        <button id="flipBtn" onclick="flipScorebug()">Flip Sides</button>
+                    <div id="togglePanel">
+                    <!-- Toggle Buttons for things like timeouts and players... -->
+                        <input type="checkbox" id="toggleTimeouts" checked onchange="toggleDivs('timeout_toggle')">
+                        <label for="toggleTimeouts">Show Timeouts</label><br>
+
+                        <input type="checkbox" id="togglePlayers" onchange="toggleDivs('player_toggle')">
+                        <label for="togglePlayers">Show Players</label><br>
+                    </div>
+                </fieldset>
+                <!-- /// -->
+                <fieldset class="other">
+                    <legend><h3>Game Info</h3></legend>
+                    <div class="vertMargin10">
+                    <select id="gameSel" onchange="createMapSelect()"></select>
+                    <p class="mini">(Active Game)</p>
+                    </div>
+                    <div class="vertMargin10">
+                        <input type="radio" id="bo1" name="seriesLength" value="0" onclick="updateSeries(1)">
+                        <label for="bo1">BO1</label>
+                        <input type="radio" id="bo3" name="seriesLength" value="1" onclick="updateSeries(3)" checked>
+                        <label for="bo3">BO3</label>
+                        <input type="radio" id="bo5" name="seriesLength" value="2" onclick="updateSeries(5)">
+                        <label for="bo1">BO5</label>
+                        <p class="mini">(Series Length)</p>                                            
+                    </div>
+                    <fieldset id="mapField">
+                        <legend><h3>Maps</h3></legend>
+                        <p class="mini">Current Map - Map Name - Map Winner</p>
+                        <div id="mapControl" class="vertMargin10"></div>
+                    </fieldset>
+                </fieldset>
+            </fieldset>
+        </div>
+    </main>
+</body>
+</html>

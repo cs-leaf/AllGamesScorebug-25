@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* CLASSES */
+.controlField{
+    margin: 10px;
+    text-align: center;
+    display: grid;
+    gap: 5px;
+    grid-template-areas: 
+    "field1 toggle field2"
+    "other other other";
+}
+.field1{
+    display: grid;
+    grid-template-areas: 
+    "inp1 prev1"
+    "roster1 roster1";
+    grid-area: field1;
+    border-radius: 10px;
+}
+.field2{
+    display: grid;
+    grid-template-areas: 
+    "prev2 inp2"
+    "roster2 roster2";
+    grid-area: field2;
+    border-radius: 10px;
+}
+.toggles{
+    grid-area: toggle;
+    align-content: center;
+    border: none;
+}
+.other{
+    text-align: center;
+    grid-area: other;
+}
+
+.mini{
+    color: rgb(80, 80, 80);
+    font-size: smaller;
+}
+.vertMargin10{
+    margin: 10px 0px;
+}
+.scoreButtonsDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.scoreButtonsDiv > h1{
+    margin: 0px 15px 0px 15px;
+}
+.imgPreview {
+    width: 100px;
+    height: 100px;
+    object-fit: scale-down;
+}
+
+/* IDs */
+#preview1{
+    padding: 0px 25px;
+    grid-area: prev1;
+}
+#input1{
+    display: block;
+    text-align: center;
+    padding: 0px 25px;
+    align-content: center;
+    grid-area: inp1;
+}
+#roster1{
+    text-align: center;
+    grid-area: roster1;
+}
+#preview2{
+    padding: 0px 25px;
+    grid-area: prev2;
+}
+#input2{
+    display: block;
+    text-align: center;
+    padding: 0px 25px;
+    align-content: center;
+    grid-area: inp2;
+}
+#roster2{
+    text-align: center;
+    grid-area: roster2;
+}
